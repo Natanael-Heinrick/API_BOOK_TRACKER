@@ -12,3 +12,4 @@ mongoose.connect(mongoURI, {
     console.error('Error connecting to MongoDB:', error);
 });
 
+module.exports = mongoose;
