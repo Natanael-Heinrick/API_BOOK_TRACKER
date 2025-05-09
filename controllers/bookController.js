@@ -44,3 +44,27 @@ exports.createBook = async (req,res) => {
         })
     }
 }
+
+exports.getAllBooks = async (req,res) => {
+    try{
+        const books = await Book.find();
+        res.status(200).json({
+            message: 'Books retrieved successfully',
+            books: books.map(book => {
+                return {
+                    id: book._id,
+                    title: book.title,
+                    author: book.author,
+                    genre: book.genre,
+                    publishedYear: book.publishedYear,
+                    summary: book.summary
+                }
+            })
+        })
+    }catch(err){
+        console.log(err);
+        res.status(500).json({
+            message: 'Error getting books'
+        })
+    }
+}
