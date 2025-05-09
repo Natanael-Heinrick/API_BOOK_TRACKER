@@ -68,3 +68,28 @@ exports.getAllBooks = async (req,res) => {
         })
     }
 }
+
+exports.getBookById = async (req,res) => {
+    const {id} = req.params;
+    try{
+        const book = await Book.findById(id);
+        if (!book) return res.status(404).json({message: 'Book not found'});
+
+        res.status(200).json({
+            message: 'Book retrieved successfully',
+            book: {
+                id: book._id,
+                title: book.title,
+                author: book.author,
+                genre: book.genre,
+                publishedYear: book.publishedYear,
+                summary: book.summary
+            }
+        })
+    } catch(err){
+        console.log(err);
+        res.status(500).json({
+            message: 'Error getting book'
+        })
+    }
+}
