@@ -26,6 +26,34 @@ Still in Git Bash install all project dependencies, run:
 npm install
 ```
 
+### 🔐 Environment Configuration
+
+This project uses environment variables to store sensitive information.
+
+#### 📝 Step-by-step:
+
+1. **Copy the example environment file:**
+
+```bash
+ cp .env.example .env
+```
+
+2. **Edit the .env file and update the MONGO_URI variable with your MongoDB connection string.**
+
+```env
+MONGO_URI=mongodb://localhost:27017/bookdb
+```
+
+Replace localhost and 27017 with your own host and port if necessary.
+
+Example for a remote database:
+
+```env
+MONGO_URI=mongodb://your-host.com:12345/mydatabase
+```
+
+⚠️ Make sure your MongoDB server is running and accessible through the given URI.
+
 ## ✨ Features
 
 - Create a new book entry with title, author, genre, published year, and summary.
