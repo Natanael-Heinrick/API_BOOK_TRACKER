@@ -16,6 +16,8 @@ Creates a new book.
 #### Request Body (JSON)
 
 ```json
+
+
 {
   "title": "O Nome do Vento",
   "author": "Patrick Rothfuss",
@@ -38,5 +40,35 @@ Creates a new book.
     "publishedYear": 2007,
     "summary": "The story of Kvothe, a gifted musician and powerful magician."
   }
+}
+```
+
+### GET `/books`
+
+Retrieves a list of all books.
+
+#### Response (200 OK)
+
+```json
+{
+  "message": "Books retrieved successfully",
+  "books": [
+    {
+      "id": "60b8c0f7d6e4f12c4c8b4567",
+      "title": "O Nome do Vento",
+      "author": "Patrick Rothfuss",
+      "genre": "Fantasy",
+      "publishedYear": 2007,
+      "summary": "The story of Kvothe, a gifted musician and powerful magician."
+    },
+    {
+      "id": "60b8c0f7d6e4f12c4c8b4568",
+      "title": "The Wise Man's Fear",
+      "author": "Patrick Rothfuss",
+      "genre": "Fantasy",
+      "publishedYear": 2011,
+      "summary": "The continuation of Kvothe's journey in the world of magic and power."
+    }
+  ]
 }
 ```
