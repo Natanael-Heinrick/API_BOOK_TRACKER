@@ -72,3 +72,27 @@ Retrieves a list of all books.
   ]
 }
 ```
+
+### GET `/books/:id`
+
+Retrieves a book by its unique ID.
+
+#### Request Parameters
+
+- `id` (string, required): The ID of the book to retrieve.
+
+#### Response (200 OK)
+
+```json
+{
+  "message": "Book retrieved successfully",
+  "book": {
+    "id": "60b8c0f7d6e4f12c4c8b4567",
+    "title": "O Nome do Vento",
+    "author": "Patrick Rothfuss",
+    "genre": "Fantasy",
+    "publishedYear": 2007,
+    "summary": "The story of Kvothe, a gifted musician and powerful magician."
+  }
+}
+```
