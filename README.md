@@ -156,4 +156,36 @@ Updates a book by its unique ID.
 
 ```
 
+### DELETE `/books/:id`
 
+Deletes a book by its unique ID.
+
+#### Request Parameters
+
+- `id` (string, required): The ID of the book to delete.
+
+#### Response (200 OK)
+
+```json
+{
+  "message": "Book deleted successfully"
+}
+```
+
+#### Error Response (404 Not Found)
+
+
+```json
+{
+    "message": "Book not found"
+}
+```
+
+#### Error Response (500 Internal Server Error)
+
+```json
+{
+  "message": "Error deleting book"
+}
+
+```
