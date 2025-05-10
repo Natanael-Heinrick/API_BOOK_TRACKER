@@ -108,7 +108,30 @@ Creates a new book.
 <a name="get-all-book"></a>
 Retrieves a list of all books.
 
-#### ✅ Response (200 OK)
+✅ Query Parameters
+
+* page (optional): The page number to retrieve. Default is 1 if not provided.
+
+* limit (optional): The number of books per page. Default is 10 if not provided.
+
+✅ Example Usage:
+1. Request: Retrieve the first page with 10 books per page:
+
+
+```bash
+GET /api/books?page=1&limit=10
+```
+Response: A list of 10 books along with pagination info.
+
+2. Request: Retrieve the second page with 5 books per page:
+
+```bash
+GET /api/books?page=2&limit=5
+```
+Response: A list of the next 5 books along with pagination info.
+
+
+#### ✅Example of Response (200 OK)
 
 ```json
 {
@@ -116,7 +139,7 @@ Retrieves a list of all books.
   "books": [
     {
       "id": "60b8c0f7d6e4f12c4c8b4567",
-      "title": "O Nome do Vento",
+      "title": "The Name of the Wind",
       "author": "Patrick Rothfuss",
       "genre": "Fantasy",
       "publishedYear": 2007,
@@ -130,7 +153,13 @@ Retrieves a list of all books.
       "publishedYear": 2011,
       "summary": "The continuation of Kvothe's journey in the world of magic and power."
     }
-  ]
+  ],
+  "pagination": {
+    "currentPage": 1,
+    "totalPages": 5,
+    "totalBooks": 45,
+    "booksPerPage": 10
+  }
 }
 ```
 

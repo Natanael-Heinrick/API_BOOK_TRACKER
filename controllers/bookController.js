@@ -55,9 +55,21 @@ exports.createBook = async (req,res) => {
     }
 }
 
-exports.getAllBooks = async (req,res) => {
-    try{
-        const books = await Book.find();
+exports.getAllBooks = async (req, res) => {
+    try {
+        const page = parseInt(req.query.page) || 1; 
+        const limit = parseInt(req.query.limit) || 10; 
+        
+        const skip = (page - 1) * limit;
+
+        const books = await Book.find()
+            .skip(skip)
+            .limit(limit);
+
+        const totalBooks = await Book.countDocuments();
+
+        const totalPages = Math.ceil(totalBooks / limit);
+
         res.status(200).json({
             message: 'Books retrieved successfully',
             books: books.map(book => {
@@ -68,16 +80,22 @@ exports.getAllBooks = async (req,res) => {
                     genre: book.genre,
                     publishedYear: book.publishedYear,
                     summary: book.summary
-                }
-            })
-        })
-    }catch(err){
+                };
+            }),
+            pagination: {
+                currentPage: page,
+                totalPages: totalPages,
+                totalBooks: totalBooks,
+                booksPerPage: limit
+            }
+        });
+    } catch (err) {
         console.log(err);
         res.status(500).json({
             message: 'Error getting books'
-        })
+        });
     }
-}
+};
 
 exports.getBookById = async (req,res) => {
     const {id} = req.params;
