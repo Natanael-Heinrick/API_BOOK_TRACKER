@@ -1,28 +1,38 @@
 const Book = require('../models/bookModel');
+const { isValidString, isValidNumber } = require('../utils/validate');
 
 
 exports.createBook = async (req,res) => {
     const { title, author, genre, publishedYear, summary } = req.body;
 
     try{
-        if (!title || typeof title !== 'string') return res.status(400).json({message: 'Title is required and title is string'});
-        
-        if (!author || typeof author !== 'string') return  res.status(400).json({message: 'Author is required and author is string'})
-        
-        if (!genre || typeof genre !== 'string') return  res.status(400).json({message: 'Genre is required and genre is string'})
-        
-        if (!publishedYear) return  res.status(400).json({message: 'Published Year is required'})
+        if (!isValidString(title)) {
+            return res.status(400).json({ message: 'Title is required and must be a non-empty string' });
+          }
+      
+          if (!isValidString(author)) {
+            return res.status(400).json({ message: 'Author is required and must be a non-empty string' });
+          }
+      
+          if (!isValidString(genre)) {
+            return res.status(400).json({ message: 'Genre is required and must be a non-empty string' });
+          }
+      
+          if (!isValidNumber(publishedYear)) {
+            return res.status(400).json({ message: 'Published Year is required and must be a non-empty integer' });
+          }
 
-        if (typeof publishedYear !== 'number') return  res.status(400).json({message: 'Published Year must be a number'})
+          if (publishedYear < 0) {
+            return res.status(400).json({ message: 'Published Year must be a positive integer' });
+          }
 
-        if (publishedYear < 0) return res.status(400).json({message: 'Published Year must be a positive number'})
 
         const book = new Book({
-            title,
-            author,
-            genre,
+            title: title.trim(),
+            author: author.trim(),
+            genre: genre.trim(),
             publishedYear,
-            summary
+            summary: summary?.trim() || null,
         });
 
         await book.save();
@@ -99,11 +109,11 @@ exports.updateBook = async (req, res) => {
     const { title, author, genre, publishedYear, summary } = req.body;
 
     const bookUpdates = {};
-    if (title) bookUpdates.title = title;
-    if (author) bookUpdates.author = author;
-    if (genre) bookUpdates.genre = genre;
-    if (publishedYear) bookUpdates.publishedYear = publishedYear;
-    if (summary) bookUpdates.summary = summary;
+    if (isValidString(title)) bookUpdates.title = title;
+    if (isValidString(author)) bookUpdates.author = author;
+    if (isValidString(genre)) bookUpdates.genre = genre;
+    if (isValidNumber(publishedYear)) bookUpdates.publishedYear = publishedYear;
+    if (isValidString(summary)) bookUpdates.summary = summary;
 
     try {
         const updatedBook = await Book.findByIdAndUpdate(id, bookUpdates, { new: true });
@@ -142,3 +152,4 @@ exports.deleteBook = async (req,res) => {
         })
     }
 }
+
