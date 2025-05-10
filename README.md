@@ -35,7 +35,7 @@ This project uses environment variables to store sensitive information.
 1. **Copy the example environment file:**
 
 ```bash
- cp .env.example .env
+ cp .env.example and modify for .env
 ```
 
 2. **Edit the .env file and update the MONGO_URI variable with your MongoDB connection string.**
