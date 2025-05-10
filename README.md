@@ -3,6 +3,29 @@
 
 This is a simple RESTful API built with Node.js for managing books in a library. It allows users to create and store book records.
 
+
+## 📦  Cloning the Project
+
+To clone the project, open your Git Bash and run:
+
+```bash
+cd Desktop/
+``` 
+
+- Then execute the following command:
+
+```bash
+git clone https://github.com/Natanael-Heinrick/API_BOOK_TRACKER.git
+```
+
+## 📦 Installing Dependencies
+
+Still in Git Bash install all project dependencies, run:
+
+```bash
+npm install
+```
+
 ## ✨ Features
 
 - Create a new book entry with title, author, genre, published year, and summary.
