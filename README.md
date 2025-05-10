@@ -7,10 +7,19 @@ This is a simple RESTful API built with Node.js for managing books in a library.
 
 - Create a new book entry with title, author, genre, published year, and summary.
 
-## Endpoint
 
-### POST `/books`
 
+## 📌 Link for Endpoints
+<a name="return-to-links-page-book"></a>
+- [Create a New Book](#create-a-new-book)
+- [Show All Books](#get-all-cards)
+- [Show Book by ID](#get-book-by-id)
+- [Update Book by Id](#update-book-by-id)
+- [Delete Book by Id](#delete-book-by-id)
+
+
+### 🔹 POST `/books`
+<a name="create-a-new-book"></a>
 Creates a new book.
 
 #### Request Body (JSON)
@@ -42,12 +51,13 @@ Creates a new book.
   }
 }
 ```
+- [Return to links endpoints book](#return-to-links-page-book)
 
-### GET `/books`
-
+### 🔹 GET `/books`
+<a name="get-all-book"></a>
 Retrieves a list of all books.
 
-#### Response (200 OK)
+#### ✅ Response (200 OK)
 
 ```json
 {
@@ -73,7 +83,10 @@ Retrieves a list of all books.
 }
 ```
 
-### GET `/books/:id`
+- [Return to links endpoints book](#return-to-links-page-book)
+
+### 🔹 GET `/books/:id`
+<a name="get-book-by-id"></a>
 
 Retrieves a book by its unique ID.
 
@@ -81,7 +94,7 @@ Retrieves a book by its unique ID.
 
 - `id` (string, required): The ID of the book to retrieve.
 
-#### Response (200 OK)
+#### ✅ Response (200 OK)
 
 ```json
 {
@@ -106,7 +119,10 @@ Retrieves a book by its unique ID.
 }
 ```
 
-### PATCH `/books/:id`
+- [Return to links endpoints book](#return-to-links-page-book)
+
+### 🔹 PATCH `/books/:id`
+<a name="update-book-by-id"></a>
 
 Updates a book by its unique ID.
 
@@ -122,7 +138,7 @@ Updates a book by its unique ID.
 - `publishedYear` (number, optional): The published year of the book.
 - `summary` (string, optional): A brief summary of the book.
 
-#### Response (200 OK)
+#### ✅ Response (200 OK)
 
 ```json
 {
@@ -156,7 +172,10 @@ Updates a book by its unique ID.
 
 ```
 
-### DELETE `/books/:id`
+- [Return to links endpoints book](#return-to-links-page-book)
+
+### 🔹 DELETE `/books/:id`
+<a name="delete-book-by-id"></a>
 
 Deletes a book by its unique ID.
 
@@ -164,7 +183,7 @@ Deletes a book by its unique ID.
 
 - `id` (string, required): The ID of the book to delete.
 
-#### Response (200 OK)
+#### ✅ Response (200 OK)
 
 ```json
 {
@@ -189,3 +208,4 @@ Deletes a book by its unique ID.
 }
 
 ```
+- [Return to links endpoints book](#return-to-links-page-book)
