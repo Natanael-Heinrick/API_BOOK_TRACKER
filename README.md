@@ -1,9 +1,9 @@
 
-# Book Management API
+# 📚 Book Management API
 
 This is a simple RESTful API built with Node.js for managing books in a library. It allows users to create and store book records.
 
-## Features
+## ✨ Features
 
 - Create a new book entry with title, author, genre, published year, and summary.
 
@@ -22,7 +22,7 @@ This is a simple RESTful API built with Node.js for managing books in a library.
 <a name="create-a-new-book"></a>
 Creates a new book.
 
-#### Request Body (JSON)
+#### Request Body (JSON) ⚙️
 
 ```json
 
@@ -36,7 +36,7 @@ Creates a new book.
 }
 ```
 
-### Response
+### ✅ Response (200 OK)
 
 ```json
 {
@@ -90,7 +90,7 @@ Retrieves a list of all books.
 
 Retrieves a book by its unique ID.
 
-#### Request Parameters
+#### Request Parameters ⚙️
 
 - `id` (string, required): The ID of the book to retrieve.
 
@@ -110,7 +110,7 @@ Retrieves a book by its unique ID.
 }
 ```
 
-#### Error Response (404 Not Found)
+#### ⚠️ Error Response (404 Not Found)
 
 
 ```json
@@ -126,11 +126,11 @@ Retrieves a book by its unique ID.
 
 Updates a book by its unique ID.
 
-#### Request Parameters
+#### Request Parameters ⚙️
 
 - `id` (string, required): The ID of the book to update.
 
-#### Request Body
+#### Request Body ⚙️
 
 - `title` (string, optional): The title of the book.
 - `author` (string, optional): The author of the book.
@@ -154,7 +154,7 @@ Updates a book by its unique ID.
 }
 ```
 
-#### Error Response (404 Not Found)
+#### ⚠️ Error Response (404 Not Found)
 
 
 ```json
@@ -163,7 +163,7 @@ Updates a book by its unique ID.
 }
 ```
 
-#### Error Response (500 Internal Server Error)
+#### ⚠️ Error Response (500 Internal Server Error)
 
 ```json
 {
@@ -179,7 +179,7 @@ Updates a book by its unique ID.
 
 Deletes a book by its unique ID.
 
-#### Request Parameters
+#### Request Parameters ⚙️
 
 - `id` (string, required): The ID of the book to delete.
 
@@ -191,7 +191,7 @@ Deletes a book by its unique ID.
 }
 ```
 
-#### Error Response (404 Not Found)
+#### ⚠️ Error Response (404 Not Found)
 
 
 ```json
@@ -200,7 +200,7 @@ Deletes a book by its unique ID.
 }
 ```
 
-#### Error Response (500 Internal Server Error)
+#### ⚠️ Error Response (500 Internal Server Error)
 
 ```json
 {
