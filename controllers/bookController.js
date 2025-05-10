@@ -1,5 +1,5 @@
 const Book = require('../models/bookModel');
-const { isValidString, isValidNumber } = require('../utils/validators');
+const { isValidString, isValidNumber } = require('../utils/validate');
 
 
 exports.createBook = async (req,res) => {
@@ -25,7 +25,7 @@ exports.createBook = async (req,res) => {
           if (publishedYear < 0) {
             return res.status(400).json({ message: 'Published Year must be a positive integer' });
           }
-          
+
 
         const book = new Book({
             title: title.trim(),
@@ -109,11 +109,11 @@ exports.updateBook = async (req, res) => {
     const { title, author, genre, publishedYear, summary } = req.body;
 
     const bookUpdates = {};
-    if (title) bookUpdates.title = title;
-    if (author) bookUpdates.author = author;
-    if (genre) bookUpdates.genre = genre;
-    if (publishedYear) bookUpdates.publishedYear = publishedYear;
-    if (summary) bookUpdates.summary = summary;
+    if (isValidString(title)) bookUpdates.title = title;
+    if (isValidString(author)) bookUpdates.author = author;
+    if (isValidString(genre)) bookUpdates.genre = genre;
+    if (isValidNumber(publishedYear)) bookUpdates.publishedYear = publishedYear;
+    if (isValidString(summary)) bookUpdates.summary = summary;
 
     try {
         const updatedBook = await Book.findByIdAndUpdate(id, bookUpdates, { new: true });
