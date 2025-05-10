@@ -125,3 +125,20 @@ exports.updateBook = async (req, res) => {
         res.status(500).json({ message: 'Error updating book' });
     }
 }
+
+exports.deleteBook = async (req,res) => {
+    const {id} = req.params;
+    try{
+
+        const deleteBook = await Book.findByIdAndDelete(id);
+        if (!deleteBook) return res.status(404).json({message: 'Book not found'});
+        res.status(200).json({
+            message: 'Book deleted successfully',
+        })
+    } catch(err){
+        console.log(err);
+        res.status(500).json({
+            message: 'Error deleting book'
+        })
+    }
+}
